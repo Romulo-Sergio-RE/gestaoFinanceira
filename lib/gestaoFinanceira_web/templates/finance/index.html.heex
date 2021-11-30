@@ -1,0 +1,30 @@
+<h1>Listing Finances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Value</th>
+      <th>Created at</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for finance <- @finances do %>
+    <tr>
+      <td><%= finance.title %></td>
+      <td><%= finance.value %></td>
+      <td><%= finance.created_at %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.finance_path(@conn, :show, finance) %></span>
+        <span><%= link "Edit", to: Routes.finance_path(@conn, :edit, finance) %></span>
+        <span><%= link "Delete", to: Routes.finance_path(@conn, :delete, finance), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Finance", to: Routes.finance_path(@conn, :new) %></span>

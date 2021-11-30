@@ -1,0 +1,23 @@
+<h1>Show Finance</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @finance.title %>
+  </li>
+
+  <li>
+    <strong>Value:</strong>
+    <%= @finance.value %>
+  </li>
+
+  <li>
+    <strong>Created at:</strong>
+    <%= @finance.created_at %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.finance_path(@conn, :edit, @finance) %></span> |
+<span><%= link "Back", to: Routes.finance_path(@conn, :index) %></span>

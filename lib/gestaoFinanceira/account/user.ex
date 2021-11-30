@@ -2,11 +2,14 @@ defmodule GestaoFinanceira.Account.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias GestaoFinanceira.Finances.Finance
+
   schema "users" do
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
+    has_many :finances, Finance
 
     timestamps()
   end

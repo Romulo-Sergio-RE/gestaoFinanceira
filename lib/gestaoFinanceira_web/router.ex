@@ -21,6 +21,7 @@ defmodule GestaoFinanceiraWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/finances", FinanceController
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,5 @@
+<h1>Edit Finance</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.finance_path(@conn, :update, @finance)) %>
+
+<span><%= link "Back", to: Routes.finance_path(@conn, :index) %></span>
