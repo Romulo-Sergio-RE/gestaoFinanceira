@@ -4,9 +4,17 @@ defmodule GestaoFinanceiraWeb.FinanceController do
   alias GestaoFinanceira.Finances
   alias GestaoFinanceira.Finances.Finance
   alias GestaoFinanceira.Repo
+  import Ecto.Query, only: [from: 2]
 
   def index(conn, _params) do
-    finances = Finances.list_finances()
+    current_user = conn.assigns.current_user
+    user_id = current_user.id
+
+    query = from f in Finance,
+      where: f.user_id == ^user_id
+
+    finances = Repo.all(query)
+
     render(conn, "index.html", finances: finances)
   end
 
