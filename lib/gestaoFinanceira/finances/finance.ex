@@ -14,7 +14,7 @@ defmodule GestaoFinanceira.Finances.Finance do
   @doc false
   def changeset(finance, attrs) do
     finance
-    |> cast(attrs, [:title, :value, :created_at])
-    |> validate_required([:title, :value, :created_at])
+    |> cast(attrs, [:title, :value, :created_at, :user_id])
+    |> validate_required([:title, :value, :created_at, :user_id])
   end
 end

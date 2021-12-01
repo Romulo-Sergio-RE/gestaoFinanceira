@@ -3,6 +3,7 @@ defmodule GestaoFinanceiraWeb.FinanceController do
 
   alias GestaoFinanceira.Finances
   alias GestaoFinanceira.Finances.Finance
+  alias GestaoFinanceira.Repo
 
   def index(conn, _params) do
     finances = Finances.list_finances()
@@ -17,19 +18,9 @@ defmodule GestaoFinanceiraWeb.FinanceController do
   def create(conn, %{"finance" => finance_params}) do
     current_user = conn.assigns.current_user
 
-    changeset = Ecto.build_assoc(current_user, :finances, finance_params)
-    IO.inspect("----------------------------")
-    IO.inspect(current_user.id)
-    IO.inspect("----------------------------")
-    IO.inspect("----------------------------")
-    IO.inspect(finance_params)
-    IO.inspect("----------------------------")
-    # changeset = Finance.changeset(%Finance{user_id: current_user.id}, finance_params)
-    # IO.inspect("----------------------------")
-    # IO.inspect(changeset)
-    # IO.inspect("----------------------------")
+    changeset = Finance.changeset(%Finance{user_id: current_user.id}, finance_params)
 
-    case Finances.create_finance(changeset) do
+    case Repo.insert(changeset) do
       {:ok, finance} ->
         conn
         |> put_flash(:info, "Finance created successfully.")
