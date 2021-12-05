@@ -1,10 +1,18 @@
-<ul>
-<%= if @current_user do %>
-  <li><%= @current_user.email %></li>
-  <li><%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %></li>
-  <li><%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %></li>
-<% else %>
-  <li><%= link "Register", to: Routes.user_registration_path(@conn, :new) %></li>
-  <li><%= link "Log in", to: Routes.user_session_path(@conn, :new) %></li>
-<% end %>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd; border-radius:1rem;">
+  <div class="container-fluid">
+    <a class="navbar-brand" >Gestao Financeira</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <%= if @current_user do %>
+          <li style="margin-right: 1.5rem;"><%= link "Home", to: Routes.finance_path(@conn, :index) %></li>
+          <li style="margin-right: 1.5rem;"><%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %></li>
+          <li style="margin-right: 1.5rem;"><%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %></li>
+          <li style="margin-right: 1.5rem;">User: <%= @current_user.email %></li>
+        <% else %>
+          <li style="margin-right: 1.5rem;"><%= link "Register", to: Routes.user_registration_path(@conn, :new) %></li>
+          <li style="margin-right: 1.5rem;"><%= link "Log in", to: Routes.user_session_path(@conn, :new) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

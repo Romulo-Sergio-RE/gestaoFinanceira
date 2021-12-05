@@ -1,30 +1,23 @@
+<div class="container" style="margin-left: 7.5rem;">
+
 <h1>Listing Finances</h1>
+<button type="submit" class="btn btn-light" style="background-color:white;margin-bottom:1.5rem; margin-left:48.7rem;border-color:blue;border-width:0.1rem;"><%= link "New Finance", to: Routes.finance_path(@conn, :new) %></button>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Value</th>
-      <th>Created at</th>
+<div class="container">
+  <div class="row">
+    <%= for finance <- @finances do %>
+      <div class="card border-primary mb-3" style="width: 18rem; margin-right: 1rem;">
+        <div class="card-body" >
+          <h5 class="card-title">Titulo: <%= finance.title %></h5>
+          <p class="card-text">Valor: <%= finance.value %></p>
+          <a href="#" class="card-link"><%= link "Show", to: Routes.finance_path(@conn, :show, finance) %></a>
+          <a href="#" class="card-link"style="margin-right: 1rem;"><%= link "Edit", to: Routes.finance_path(@conn, :edit, finance) %></a>
+          <a href="#" class="card-link"style="margin-right: 1rem;"><%= link "Delete", to: Routes.finance_path(@conn, :delete, finance), method: :delete, data: [confirm: "Are you sure?"] %></a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for finance <- @finances do %>
-    <tr>
-      <td><%= finance.title %></td>
-      <td><%= finance.value %></td>
-      <td><%= finance.created_at %></td>
 
-      <td>
-        <span><%= link "Show", to: Routes.finance_path(@conn, :show, finance) %></span>
-        <span><%= link "Edit", to: Routes.finance_path(@conn, :edit, finance) %></span>
-        <span><%= link "Delete", to: Routes.finance_path(@conn, :delete, finance), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<span><%= link "New Finance", to: Routes.finance_path(@conn, :new) %></span>
