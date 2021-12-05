@@ -19,7 +19,8 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Source: https://github.com/phoenixframework/phoenix
   
 ## Trabalho Gestao Financeira
-
+- nome: Romulo Sergio
+- nome: Rafael Ruda
 - A aplicação deve armazenar dados em um banco de dados PostgreSQL ou MySQL utilizando o framework Ecto
 
 - A aplicação deve permitir que um usuário possa realizar a criação, edição, listagem e exclusão de receitas e despesas
