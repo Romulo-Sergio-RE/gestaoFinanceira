@@ -10,8 +10,9 @@ defmodule GestaoFinanceiraWeb.FinanceController do
     current_user = conn.assigns.current_user
     user_id = current_user.id
 
-    query = from f in Finance,
-      where: f.user_id == ^user_id
+    query =
+      from f in Finance,
+        where: f.user_id == ^user_id
 
     finances = Repo.all(query)
 
@@ -31,7 +32,7 @@ defmodule GestaoFinanceiraWeb.FinanceController do
     case Repo.insert(changeset) do
       {:ok, finance} ->
         conn
-        |> put_flash(:info, "Finance created successfully.")
+        |> put_flash(:info, "Created successfully.")
         |> redirect(to: Routes.finance_path(conn, :show, finance))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -56,7 +57,7 @@ defmodule GestaoFinanceiraWeb.FinanceController do
     case Finances.update_finance(finance, finance_params) do
       {:ok, finance} ->
         conn
-        |> put_flash(:info, "Finance updated successfully.")
+        |> put_flash(:info, "Updated successfully.")
         |> redirect(to: Routes.finance_path(conn, :show, finance))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -69,7 +70,7 @@ defmodule GestaoFinanceiraWeb.FinanceController do
     {:ok, _finance} = Finances.delete_finance(finance)
 
     conn
-    |> put_flash(:info, "Finance deleted successfully.")
+    |> put_flash(:info, "Deleted successfully.")
     |> redirect(to: Routes.finance_path(conn, :index))
   end
 end

@@ -1,26 +1,43 @@
-<h1>Register</h1>
-
-<.form let={f} for={@changeset} action={Routes.user_registration_path(@conn, :create)}>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
+<%= if @changeset.action do %>
+    <div class="alert alert-danger" style="margin-top:1rem;height:3.2rem; width:30rem;margin-left:19.3rem;">
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
+<div class="container" 
+     style=
+     "margin-left: 24rem;
+      margin-top: 3rem;
+      background-color: #e3f2fd;
+      border-radius:1rem;
+      width:21.5rem;
+      height:20rem;
+     "
+>
+<h1 style="margin-left:6rem;">Register</h1>
 
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
-  <%= error_tag f, :email %>
+<.form let={f} for={@changeset} action={Routes.user_registration_path(@conn, :create)}>
 
-  <%= label f, :password %>
-  <%= password_input f, :password, required: true %>
-  <%= error_tag f, :password %>
-
-  <div>
-    <%= submit "Register" %>
+<form>
+  <div class="mb-3" style="margin-top:2rem;">
+    <label style="margin-right:2.5rem;margin-left:1rem;" for="exampleInputEmail1" class="form-label"><%= label f, :email %></label>
+      <%= email_input f, :email, required: true %>
+      <%= error_tag f, :email %>
   </div>
+
+  <div class="mb-3">
+    <label style="margin-right:0.8rem; margin-left:1rem;" for="exampleInputPassword1" class="form-label"><%= label f, :password %></label>
+    <%= password_input f, :password, required: true %>
+    <%= error_tag f, :password %>
+  </div>
+
+  <button type="submit" class="btn btn-primary" style="width:8rem;margin-left:6.4rem;margin-top:1rem; margin-bottom:1.5rem;">Register</button>
+</form>
 </.form>
 
-<p>
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %> |
+<button type="submit" class="btn btn-light" style="margin-right:1.7rem;background-color:white;border-color:blue;border-width:0.1rem;">
+  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
+</button> |
+<button type="submit" class="btn btn-light" style="margin-left:1rem;background-color:white;border-color:blue;border-width:0.1rem;">
   <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
-</p>
+</button>
+</div>

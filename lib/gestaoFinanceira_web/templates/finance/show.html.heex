@@ -1,23 +1,28 @@
-<h1>Show Finance</h1>
+<div class="container" style="margin-left: 4.5rem;">
+<h1 style="margin-top:2rem;">Show Finance</h1>
 
-<ul>
+<table class="table table-bordered border-primary " style="margin-top:3rem;margin-bottom:2rem; width:60rem;">
+  <thead style="background-color: #e3f2fd;">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Value</th>
+      <th scope="col">Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @finance.title %></td>
+      <td><%= @finance.value %></td>
+      <td><%= @finance.created_at %></td>
+    </tr>
+  </tbody>
+</table>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @finance.title %>
-  </li>
+<button type="submit" class="btn btn-light" style="margin-right:1rem;background-color:white;border-color:blue;border-width:0.1rem;">
+  <%= link "Edit", to: Routes.finance_path(@conn, :edit, @finance) %>
+</button> |
+<button type="submit" class="btn btn-light" style="margin-left:1rem;background-color:white;border-color:blue;border-width:0.1rem;">
+  <%= link "Back", to: Routes.finance_path(@conn, :index) %>
+</button>
 
-  <li>
-    <strong>Value:</strong>
-    <%= @finance.value %>
-  </li>
-
-  <li>
-    <strong>Created at:</strong>
-    <%= @finance.created_at %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.finance_path(@conn, :edit, @finance) %></span> |
-<span><%= link "Back", to: Routes.finance_path(@conn, :index) %></span>
+</div>

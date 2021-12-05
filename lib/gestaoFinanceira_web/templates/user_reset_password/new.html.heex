@@ -1,15 +1,30 @@
-<h1>Forgot your password?</h1>
-
+<div class="container" 
+     style=
+     "margin-left: 24rem;
+      margin-top: 3rem;
+      background-color: #e3f2fd;
+      border-radius:1rem;
+      width:21.5rem;
+      height:16rem;
+     "
+>
+<h1 style="margin-left:2.3rem; font-size:24px;">Forgot your password?</h1>
 <.form let={f} for={:user} action={Routes.user_reset_password_path(@conn, :create)}>
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
-
-  <div>
-    <%= submit "Send instructions to reset password" %>
+<form >
+  <div class="mb-3" style="margin-top:2rem;">
+    <label style="margin-right:2.5rem;margin-left:1rem;" for="exampleInputEmail1" class="form-label"><%= label f, :email %></label>
+    <%= email_input f, :email, required: true %>
   </div>
+
+  <button type="submit" class="btn btn-primary" style="width:10rem;margin-left:6rem;margin-top:1rem; margin-bottom:1.5rem;">Reset Password</button>
+</form>
 </.form>
 
-<p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
+<button type="submit" class="btn btn-light" style="margin-left:4rem;margin-right:1rem;background-color:white;border-color:blue;border-width:0.1rem;">
+  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %>
+</button> |
+<button type="submit" class="btn btn-light" style="margin-left:1rem;background-color:white;border-color:blue;border-width:0.1rem;">
   <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
-</p>
+</button>
+
+</div>

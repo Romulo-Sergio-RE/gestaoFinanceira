@@ -20,7 +20,7 @@ defmodule GestaoFinanceiraWeb.Router do
   scope "/", GestaoFinanceiraWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", UserSessionController, :new
     resources "/finances", FinanceController
   end
 

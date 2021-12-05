@@ -4,20 +4,26 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-
-  <%= label f, :title %>
-  <%= text_input f, :title %>
-  <%= error_tag f, :title %>
-
-  <%= label f, :value %>
-  <%= number_input f, :value, step: "any" %>
-  <%= error_tag f, :value %>
-
-  <%= label f, :created_at %>
-  <%= datetime_select f, :created_at %>
-  <%= error_tag f, :created_at %>
-
-  <div>
-    <%= submit "Save" %>
+  <form >
+  <div class="mb-3">
+    <label style="margin-top:2rem;margin-right:2.5rem;margin-left:1rem;" for="exampleInputEmail1" class="form-label"><%= label f, :title %></label>
+    <%= text_input f, :title %>
+    <%= error_tag f, :title %>
   </div>
+
+  <div class="mb-3" >
+    <label style="margin-right:2rem; margin-left:1rem;"for="exampleInputPassword1" class="form-label"><%= label f, :value %></label>
+    <%= number_input f, :value, step: "any" %>
+    <%= error_tag f, :value %>
+  </div>
+
+  <div class="mb-3" >
+    <label style="margin-right:1rem; margin-left:1rem;"for="exampleInputPassword1" class="form-label"><%= label f, :created %></label>
+    <%= datetime_select f, :created_at%>
+    <%= error_tag f, :created_at %>
+  </div>
+
+  <button type="submit" class="btn btn-primary" style="width:8rem;margin-left:6.4rem;margin-top:1rem; margin-bottom:1.5rem;">Save</button>
+</form>
 </.form>
+
